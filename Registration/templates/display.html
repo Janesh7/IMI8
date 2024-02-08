@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Display</title>
+  <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <h1>Side Bar</h1>
+      <ul>
+        <li><a href="{{url_for('index')}}">Register</a></li>
+        <li class="active"><a href="{{url_for('display')}}">Display</a></li>
+        <li><a href="{{url_for('update')}}">Update</a></li>
+        <li><a href="{{url_for('delete')}}">Delete</a></li>
+      </ul>
+    </div>
+    <div class="content">
+      <div class="filter-bar">
+        <form action="{{ url_for('display') }}" method="post">
+          <input type="text" name="filter_value" placeholder="Enter Search Term">
+          <select name="filter_key">
+            <option value="username">Username</option>
+            <option value="email">Email</option>
+            <option value="phoneNumber">Phone Number</option>
+            <option value="address">Address</option>
+            <option value="DateOfBirth">Date of Birth</option>
+          </select>
+          <button type="submit">Apply Filter</button>
+        </form>
+      </div>
+      <div class="table-container">
+        <h1>Your Details</h1>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Phone Number</th>
+              <th>Address</th>
+              <th>Date of Birth</th>
+              <th>Created At</th>
+              <th>Updated At</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for account in accounts %}
+            <tr>
+              <td>{{ account['id'] }}</td>
+              <td>{{ account['username'] }}</td>
+              <td>{{ account['email'] }}</td>
+              <td>{{ account['phoneNumber'] }}</td>
+              <td>{{ account['address'] }}</td>
+              <td>{{ account['DateOfBirth'] }}</td>
+              <td>{{ account['CreatedAt'] }}</td>
+              <td>{{ account['UpdatedAt'] }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

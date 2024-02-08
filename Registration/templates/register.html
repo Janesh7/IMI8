@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+  <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <h1>Side Bar</h1>
+      <ul>
+        <li class="active"><a href="{{ url_for('index') }}">Register</a></li>
+        <li><a href="{{ url_for('display') }}">Display</a></li>
+        <li><a href="{{ url_for('update') }}">Update</a></li>
+        <li><a href="{{url_for('delete')}}">Delete</a></li>
+      </ul>
+    </div>
+    <div class="content">
+      <div class="register-form">
+        <h1>Register</h1>
+        <div class="message">{{ msg }}</div>
+        <form action="{{ url_for('register') }}" method="post" autocomplete="on">
+          <input type="text" name="username" placeholder="Enter Your Username" class="textbox" id="username" required><br>
+          <input type="email" name="email" placeholder="Enter Your Email ID" class="textbox" id="email" required><br>
+          <input type="text" name="phoneNumber" placeholder="Enter Your Phone Number" class="textbox" id="phoneNumber" required><br>
+          <input type="text" name="address" placeholder="Enter Your Address" class="textbox" id="address" required><br>
+          <input type="date" name="DateOfBirth" placeholder="Enter Your Date of Birth" class="textbox" id="DateOfBirth" required><br>
+          <input type="submit" class="btn" value="Register">
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
